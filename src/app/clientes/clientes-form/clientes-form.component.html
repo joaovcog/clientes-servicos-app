@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Clientes</h1>
+        <h1 class="h3 mb-0 text-gray-800">Novo Cliente</h1>
     </div>
 
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
@@ -50,9 +50,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <button type="submit" class="btn btn-success">
                     <i class="fas fa-save" style="margin-right: 5px;"></i> Salvar
+                </button>
+                <button type="button" class="btn btn-danger ml-2" (click)="voltarParaListagem()">
+                    <i class="fas fa-rotate-right" style="margin-right: 5px;"></i> Voltar
                 </button>
             </div>
         </div>
