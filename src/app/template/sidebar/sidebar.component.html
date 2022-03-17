@@ -16,7 +16,7 @@
     </div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" routerLink="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Home</span></a>
@@ -32,8 +32,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link collapsed" routerLink="/clientes" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" routerLink="/clientes">
             <i class="fas fa-fw fa-cog"></i>
             <span>Clientes</span>
         </a>
