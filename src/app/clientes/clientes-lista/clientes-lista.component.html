@@ -3,6 +3,16 @@
         <h1 class="h3 mb-0 text-gray-800">Consulta de Clientes</h1>
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-2">
             <button class="btn btn-primary" (click)="novoCadastro()">
                 <i class="fas fa-plus" style="margin-right: 10px;"></i>Novo
@@ -33,12 +43,38 @@
                                 <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">
                                     <i class="fas fa-pencil"></i>
                                 </button>
+
+                                <span style="margin: 5px;"></span>
+
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#modalExclusao"
+                                    (click)="prepararExclusao(cliente)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
+        </div>
+    </div>
+
+    <div id="modalExclusao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação</h4>
+                </div>
+
+                <div class="modal-body" *ngIf="clienteSelecionado">
+                    Confirma a exclusão do(a) cliente {{ clienteSelecionado.nome }}?
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-success" (click)="excluirCliente()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -11,10 +11,17 @@ import { Cliente } from '../cliente.model';
 export class ClientesListaComponent implements OnInit {
 
   clientes: Cliente[] = [];
+  clienteSelecionado: Cliente | undefined;
+  mensagemSucesso: string | undefined;
+  mensagemErro: string | undefined;
 
   constructor(private clienteService: ClientesService, private router: Router) { }
 
   ngOnInit(): void {
+    this.carregarTodos();
+  }
+
+  carregarTodos(): void {
     this.clienteService.getClientes().subscribe(response => {
       this.clientes = response;
     });
@@ -22,6 +29,23 @@ export class ClientesListaComponent implements OnInit {
 
   novoCadastro(): void {
     this.router.navigate(['/clientes-form']);
+  }
+
+  prepararExclusao(cliente: Cliente): void {
+    this.clienteSelecionado = cliente;
+  }
+
+  excluirCliente(): void {
+    if (this.clienteSelecionado) {
+      this.clienteService.excluir(this.clienteSelecionado).subscribe({
+        complete: () => {
+          this.mensagemSucesso = 'Cliente excluído com sucesso!';
+          this.carregarTodos();
+        }, error: (errorResponse) => {
+          this.mensagemErro = 'Ocorreu um erro ao excluir o cliente. ';
+        }
+      });
+    }
   }
 
 }

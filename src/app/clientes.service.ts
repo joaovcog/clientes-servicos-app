@@ -28,4 +28,8 @@ export class ClientesService {
     return this.http.put<void>(`${this.baseUrl}/${cliente.id}`, cliente);
   }
 
+  excluir(cliente: Cliente): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${cliente.id}`);
+  }
+
 }
