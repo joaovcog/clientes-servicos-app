@@ -10,8 +10,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Início',
-      routeUrl: ''
+      title: 'Home',
+      routeUrl: '/home'
     }
   }
 

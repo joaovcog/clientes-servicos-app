@@ -23,7 +23,7 @@ export class ServicosPrestadosFormComponent implements OnInit {
     private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Serviços Prestados',
-      routeUrl: '/servicos-prestados-lista'
+      routeUrl: '/servicos-prestados/lista'
     }
   }
 
@@ -49,7 +49,7 @@ export class ServicosPrestadosFormComponent implements OnInit {
   }
 
   voltarParaConsulta(): void {
-    this.router.navigate(['/servicos-prestados-lista']);
+    this.router.navigate(['/servicos-prestados/lista']);
   }
 
 }

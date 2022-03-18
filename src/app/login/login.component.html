@@ -1,0 +1,52 @@
+<div id="layoutAuthentication">
+    <div id="layoutAuthenticationContent">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">
+                                    <i class="fas fa-circle-user mr-3" style="font-size: 2.5rem;"></i>Entrar
+                                </h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="alert alert-danger" *ngIf="loginError">
+                                    Login e/ou senha incorreto(a).
+                                </div>
+
+                                <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="user">
+                                    <div class="form-group">
+                                        <input type="text" name="username" [(ngModel)]="username"
+                                            class="form-control form-control-user py-4"
+                                            placeholder="Digite seu login" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" name="password" [(ngModel)]="password"
+                                            class="form-control py-4 form-control-user"
+                                            placeholder="Digite sua senha" />
+                                    </div>
+
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block"
+                                            style="width: 100%">
+                                            Entrar
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <hr>
+
+                                <div class="text-center mt-2">
+                                    <a routerLink="/registrar" class="small">Criar uma conta!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

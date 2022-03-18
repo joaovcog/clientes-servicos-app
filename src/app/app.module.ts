@@ -10,16 +10,24 @@ import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './clientes.service';
 import { ServicosPrestadosModule } from './servicos-prestados/servicos-prestados.module';
 import { ServicosPrestadosService } from './servicos-prestados.service';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { RegistrarComponent } from './registrar/registrar.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegistrarComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
 
     TemplateModule,
     ClientesModule,

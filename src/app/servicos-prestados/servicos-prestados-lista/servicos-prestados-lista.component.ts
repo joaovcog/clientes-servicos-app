@@ -22,7 +22,7 @@ export class ServicosPrestadosListaComponent implements OnInit {
     this.meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     headerService.headerData = {
       title: 'Serviços Prestados',
-      routeUrl: '/servicos-prestados-lista'
+      routeUrl: '/servicos-prestados/lista'
     }
   }
 
@@ -30,7 +30,7 @@ export class ServicosPrestadosListaComponent implements OnInit {
   }
 
   novoCadastro(): void {
-    this.router.navigate(['/servicos-prestados-form']);
+    this.router.navigate(['/servicos-prestados/form']);
   }
 
   consultar(): void {

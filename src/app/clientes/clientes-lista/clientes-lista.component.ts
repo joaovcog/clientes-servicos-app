@@ -19,7 +19,7 @@ export class ClientesListaComponent implements OnInit {
   constructor(private clienteService: ClientesService, private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Clientes',
-      routeUrl: '/clientes-lista'
+      routeUrl: '/clientes/lista'
     }
   }
 
@@ -34,7 +34,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   novoCadastro(): void {
-    this.router.navigate(['/clientes-form']);
+    this.router.navigate(['/clientes/form']);
   }
 
   prepararExclusao(cliente: Cliente): void {

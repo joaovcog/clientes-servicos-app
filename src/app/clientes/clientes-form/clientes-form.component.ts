@@ -20,7 +20,7 @@ export class ClientesFormComponent implements OnInit {
   constructor(private clienteService: ClientesService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Clientes',
-      routeUrl: '/clientes-lista'
+      routeUrl: '/clientes/lista'
     }
   }
 
@@ -72,7 +72,7 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltarParaListagem(): void {
-    this.router.navigate(['/clientes-lista']);
+    this.router.navigate(['/clientes/lista']);
   }
 
 }
