@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/clientes.service';
 import { Cliente } from 'src/app/clientes/cliente.model';
 import { ServicosPrestadosService } from 'src/app/servicos-prestados.service';
+import { HeaderService } from 'src/app/template/topbar/header.service';
 import { ServicoPrestado } from '../servicos-prestados.model';
 
 @Component({
@@ -18,7 +19,13 @@ export class ServicosPrestadosFormComponent implements OnInit {
   errors: string[] = [];
   mensagemSucesso: string = '';
 
-  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicosPrestadosService, private router: Router) { }
+  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicosPrestadosService,
+    private router: Router, private headerService: HeaderService) {
+    headerService.headerData = {
+      title: 'Serviços Prestados',
+      routeUrl: '/servicos-prestados-lista'
+    }
+  }
 
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe(response => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientesService } from 'src/app/clientes.service';
+import { HeaderService } from 'src/app/template/topbar/header.service';
 import { Cliente } from '../cliente.model';
 
 @Component({
@@ -16,8 +17,11 @@ export class ClientesFormComponent implements OnInit {
   id: number | undefined;
   mensagemSucesso: string = '';
 
-  constructor(private clienteService: ClientesService, private router: Router, private route: ActivatedRoute) {
-
+  constructor(private clienteService: ClientesService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService) {
+    headerService.headerData = {
+      title: 'Clientes',
+      routeUrl: '/clientes-lista'
+    }
   }
 
   ngOnInit(): void {

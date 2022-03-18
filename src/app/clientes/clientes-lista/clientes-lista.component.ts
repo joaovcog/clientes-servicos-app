@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/clientes.service';
+import { HeaderService } from 'src/app/template/topbar/header.service';
 import { Cliente } from '../cliente.model';
 
 @Component({
@@ -15,7 +16,12 @@ export class ClientesListaComponent implements OnInit {
   mensagemSucesso: string | undefined;
   mensagemErro: string | undefined;
 
-  constructor(private clienteService: ClientesService, private router: Router) { }
+  constructor(private clienteService: ClientesService, private router: Router, private headerService: HeaderService) {
+    headerService.headerData = {
+      title: 'Clientes',
+      routeUrl: '/clientes-lista'
+    }
+  }
 
   ngOnInit(): void {
     this.carregarTodos();

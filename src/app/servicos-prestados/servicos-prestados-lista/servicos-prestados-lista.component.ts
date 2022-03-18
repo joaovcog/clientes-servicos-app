@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicosPrestadosService } from 'src/app/servicos-prestados.service';
+import { HeaderService } from 'src/app/template/topbar/header.service';
 import { ServicoPrestadoBusca } from './servicos-prestados-busca';
 
 @Component({
@@ -17,8 +18,12 @@ export class ServicosPrestadosListaComponent implements OnInit {
 
   servicosPrestados: ServicoPrestadoBusca[] = [];
 
-  constructor(private servicoPrestadoService: ServicosPrestadosService, private router: Router) {
+  constructor(private servicoPrestadoService: ServicosPrestadosService, private router: Router, private headerService: HeaderService) {
     this.meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    headerService.headerData = {
+      title: 'Serviços Prestados',
+      routeUrl: '/servicos-prestados-lista'
+    }
   }
 
   ngOnInit(): void {

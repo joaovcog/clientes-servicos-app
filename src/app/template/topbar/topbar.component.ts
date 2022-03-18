@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-topbar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private headerService: HeaderService) { }
 
   ngOnInit(): void {
+  }
+
+  get title(): string {
+    const title = this.headerService.headerData.title;
+
+    return title ? title : '';
+  }
+
+  get routeUrl(): string {
+    const routeUrl = this.headerService.headerData.routeUrl;
+
+    return routeUrl ? routeUrl : '';
   }
 
 }
