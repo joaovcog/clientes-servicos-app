@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ clientes ? 'Edição de Serviço' : 'Novo Serviço' }}</h1>
+    </div>
+
+    <form #servicoForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Cliente: </label>
+                    <select class="form-control">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+                            {{ cliente.nome }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
