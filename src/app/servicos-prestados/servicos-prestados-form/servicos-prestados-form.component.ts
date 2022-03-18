@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/clientes.service';
 import { Cliente } from 'src/app/clientes/cliente.model';
 import { ServicosPrestadosService } from 'src/app/servicos-prestados.service';
@@ -17,7 +18,7 @@ export class ServicosPrestadosFormComponent implements OnInit {
   errors: string[] = [];
   mensagemSucesso: string = '';
 
-  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicosPrestadosService) { }
+  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicosPrestadosService, private router: Router) { }
 
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe(response => {
@@ -38,6 +39,10 @@ export class ServicosPrestadosFormComponent implements OnInit {
         this.errors = errorResponse.error.errors;
       }
     });
+  }
+
+  voltarParaConsulta(): void {
+    this.router.navigate(['/servicos-prestados-lista']);
   }
 
 }
