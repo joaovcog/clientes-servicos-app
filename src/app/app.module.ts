@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './clientes.service';
 import { ServicosPrestadosModule } from './servicos-prestados/servicos-prestados.module';
+import { ServicosPrestadosService } from './servicos-prestados.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ServicosPrestadosModule } from './servicos-prestados/servicos-prestados
     ServicosPrestadosModule
   ],
   providers: [
-    ClientesService
+    ClientesService,
+    ServicosPrestadosService
   ],
   bootstrap: [AppComponent]
 })
