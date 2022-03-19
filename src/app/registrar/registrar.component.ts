@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Usuario } from './usuario.model';
 
 @Component({
   selector: 'app-registrar',
@@ -7,18 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarComponent implements OnInit {
 
-  nome: string | undefined;
-  username: string | undefined;
-  password: string | undefined;
+  usuario: Usuario = new Usuario();
   hasError: boolean | undefined;
+  mensagemSucesso: string | undefined;
+  usuarioCriado: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-
+    this.authService.salvar(this.usuario).subscribe({
+      complete: () => {
+        this.hasError = false;
+        this.mensagemSucesso = 'Conta criada com sucesso!';
+        this.usuarioCriado = true;
+      },
+      error: (errorResponse) => {
+        this.hasError = true;
+        this.mensagemSucesso = undefined;
+      }
+    });
   }
 
 }

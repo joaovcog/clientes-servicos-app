@@ -11,23 +11,34 @@
                         </div>
 
                         <div class="card-body">
+                            <div class="alert alert-success" *ngIf="mensagemSucesso">
+                                {{ mensagemSucesso }} <a class="alert-link small" routerLink="/login">Clique aqui para
+                                    entrar</a>
+                            </div>
                             <div class="alert alert-danger" *ngIf="hasError">
                                 Login e/ou senha incorreto(a).
                             </div>
 
-                            <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="user">
+                            <form #registrarForm="ngForm" (ngSubmit)="onSubmit()" class="user">
                                 <div class="form-group">
-                                    <input type="text" name="nome" [(ngModel)]="nome"
+                                    <input type="text" name="nome" [(ngModel)]="usuario.nome" [disabled]="usuarioCriado"
                                         class="form-control form-control-user py-4" placeholder="Digite seu nome" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="username" [(ngModel)]="username"
-                                        class="form-control form-control-user py-4" placeholder="Digite um login" />
+                                    <input type="text" name="email" [(ngModel)]="usuario.email"
+                                        [disabled]="usuarioCriado" class="form-control form-control-user py-4"
+                                        placeholder="Digite seu email" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="usuario" [(ngModel)]="usuario.usuario"
+                                        [disabled]="usuarioCriado" class="form-control form-control-user py-4"
+                                        placeholder="Digite um nome de usuário" />
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" name="password" [(ngModel)]="password"
-                                        class="form-control py-4 form-control-user" placeholder="Digite uma senha" />
+                                    <input type="password" name="senha" [(ngModel)]="usuario.senha"
+                                        [disabled]="usuarioCriado" class="form-control py-4 form-control-user"
+                                        placeholder="Digite uma senha" />
                                 </div>
 
                                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
