@@ -19,6 +19,8 @@ export class LoginComponent {
     if (this.username && this.password) {
       this.authService.logar(this.username, this.password).subscribe({
         next: (response) => {
+          const access_token = JSON.stringify(response);
+          localStorage.setItem('access_token', access_token);
           console.log(response);
         },
         complete: () => {

@@ -16,11 +16,22 @@ export class ClientesService {
   }
 
   salvar(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.baseUrl, cliente);
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString || '{}');
+    const headers = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+
+    return this.http.post<Cliente>(this.baseUrl, cliente, { headers });
   }
 
   getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.baseUrl);
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString || '{}');
+    const headers = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+    return this.http.get<Cliente[]>(this.baseUrl, { headers });
   }
 
   getClienteById(id: number): Observable<Cliente> {
