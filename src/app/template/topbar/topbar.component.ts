@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { HeaderService } from './header.service';
 
 @Component({
@@ -8,9 +10,12 @@ import { HeaderService } from './header.service';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor(private headerService: HeaderService) { }
+  usuarioLogado: string | undefined;
+
+  constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.usuarioLogado = this.authService.getUsuarioAutenticado();
   }
 
   get title(): string {
@@ -23,6 +28,11 @@ export class TopbarComponent implements OnInit {
     const routeUrl = this.headerService.headerData.routeUrl;
 
     return routeUrl ? routeUrl : '';
+  }
+
+  logout(): void {
+    this.authService.encerrarSessao();
+    this.router.navigate(['/login']);
   }
 
 }
