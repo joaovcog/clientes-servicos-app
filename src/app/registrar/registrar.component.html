@@ -15,8 +15,8 @@
                                 {{ mensagemSucesso }} <a class="alert-link small" routerLink="/login">Clique aqui para
                                     entrar</a>
                             </div>
-                            <div class="alert alert-danger" *ngIf="hasError">
-                                Login e/ou senha incorreto(a).
+                            <div class="alert alert-danger" *ngFor="let error of errors">
+                                {{ error }}
                             </div>
 
                             <form #registrarForm="ngForm" (ngSubmit)="onSubmit()" class="user">

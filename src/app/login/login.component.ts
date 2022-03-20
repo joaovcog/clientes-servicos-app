@@ -10,8 +10,7 @@ export class LoginComponent {
 
   username: string | undefined;
   password: string | undefined;
-  loginError: boolean | undefined;
-  cadastrando: boolean | undefined;
+  errors: string[] = [];
 
   constructor(private router: Router) { }
 

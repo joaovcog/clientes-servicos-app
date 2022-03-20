@@ -10,7 +10,7 @@ import { Usuario } from './usuario.model';
 export class RegistrarComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  hasError: boolean | undefined;
+  errors: string[] = [];
   mensagemSucesso: string | undefined;
   usuarioCriado: boolean = false;
 
@@ -22,13 +22,13 @@ export class RegistrarComponent implements OnInit {
   onSubmit(): void {
     this.authService.salvar(this.usuario).subscribe({
       complete: () => {
-        this.hasError = false;
         this.mensagemSucesso = 'Conta criada com sucesso!';
         this.usuarioCriado = true;
+        this.errors = [];
       },
       error: (errorResponse) => {
-        this.hasError = true;
         this.mensagemSucesso = undefined;
+        this.errors = errorResponse.error.errors;
       }
     });
   }
